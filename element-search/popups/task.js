@@ -9,15 +9,13 @@ success.item(0).onclick = function() {
 }
 
 const close = document.querySelectorAll('div.modal__close_times')
-const modal = document.querySelector('.modal__content')
-function f ([...param]){
-  for (let value in param) {
-    param[value].onclick = function() {
-      modal.closest('.modal').classList.remove('modal_active')
-    }
+
+for (let value in [...close]) {
+  [...close][value].onclick = function() {
+    const modal = document.querySelector('.modal_active')
+    modal.closest('.modal').classList.remove('modal_active')
   }
 }
-f(close)
 
 const btnGoodJob = document.querySelector('a.btn_success')
 btnGoodJob.onclick = function() {
