@@ -68,7 +68,7 @@ class Autocomplete {
   }
 
   getMatches( text ) {  
-    let arr = [];
+    const arr = [];
       for (let i = 0; i < this.input.length; i++) {
         if (this.input[i].textContent.includes(text)) {
           arr.push({
