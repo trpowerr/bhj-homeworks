@@ -60,21 +60,6 @@ const productPlus = (target) => {
     target.previousElementSibling.innerText = productQuantity;
 };
 
-const animationAddProduct = (product, img, imgInCart) => {
-
-    let coordImgClone = img.getBoundingClientRect();
-    let coordImgInCart = imgInCart.getBoundingClientRect();
-    const translateX = coordImgInCart.x - coordImgClone.x;
-    const translateY = coordImgInCart.y - coordImgClone.y;
-    const imgClone = img.cloneNode();
-    product.insertBefore(imgClone, img);
-    img.classList.add('object');
-    img.style.transform = `translate(${translateX}px, ${translateY}px)`;
-    setTimeout(() => {
-        img.remove()
-    }, 400);
-}
-
 const addProduct = (target) => {
     document.querySelector('.cart').classList.remove('cart__hide');
     const product = target.closest('.product');
@@ -86,8 +71,6 @@ const addProduct = (target) => {
     let exitFunction = 0;
     countCartProducts.forEach(element => {
         if (element.getAttribute('data-id') === idProduct) {
-            const imgInCart = element.querySelector('.cart__product-image');
-            animationAddProduct(product, img, imgInCart);
             let elementProductCount = +element.querySelector('.cart__product-count').innerText;
             const newProductCount = elementProductCount + productCount;
             element.querySelector('.cart__product-count').innerText = newProductCount;
@@ -130,3 +113,6 @@ const deleteCard = (event) => {
 
 document.querySelector('.products').addEventListener('click', changeProduct);
 cartProducts.addEventListener('click', deleteCard);
+const cardDel = document.querySelector('.cart__product')
+cardDel.remove()
+
