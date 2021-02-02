@@ -35,9 +35,6 @@ const sentThing = event => {
         return
     }
     createElement(value,keyTaskNumber);
-    localStorage.setItem(keyTaskNumber, value);
-    keyTaskNumber++;
-    localStorage.setItem('keyTaskNumber', keyTaskNumber);
     document.querySelector('.tasks__input').value = '';
 }
 
